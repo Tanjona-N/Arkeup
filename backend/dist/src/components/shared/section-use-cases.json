@@ -1,0 +1,21 @@
+{
+    "collectionName": "components_shared_section_use_cases",
+    "info": {
+        "displayName": "Section Use Cases"
+    },
+    "options": {},
+    "attributes": {
+        "titre_section": {
+            "type": "string"
+        },
+        "description_section": {
+            "type": "text"
+        },
+        "liste_use_cases": {
+            "type": "component",
+            "component": "shared.use-case-item",
+            "repeatable": true
+        }
+    },
+    "config": {}
+}

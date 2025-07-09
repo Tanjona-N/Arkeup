@@ -1,0 +1,16 @@
+{
+    "collectionName": "components_shared_transformer_votre_entreprise_avec_l_ia_s",
+    "info": {
+        "displayName": "Transformer votre entreprise avec l'IA ?"
+    },
+    "options": {},
+    "attributes": {
+        "titre": {
+            "type": "string"
+        },
+        "description": {
+            "type": "text"
+        }
+    },
+    "config": {}
+}

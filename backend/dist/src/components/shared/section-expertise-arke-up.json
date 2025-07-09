@@ -1,0 +1,21 @@
+{
+    "collectionName": "components_shared_section_expertise_arke_ups",
+    "info": {
+        "displayName": "Section Expertise ArkeUp"
+    },
+    "options": {},
+    "attributes": {
+        "titre_section": {
+            "type": "string"
+        },
+        "description_section": {
+            "type": "text"
+        },
+        "liste_expertises": {
+            "type": "component",
+            "component": "shared.expertise-item",
+            "repeatable": true
+        }
+    },
+    "config": {}
+}

@@ -1,0 +1,40 @@
+{
+    "kind": "singleType",
+    "collectionName": "home_pages",
+    "info": {
+        "singularName": "home-page",
+        "pluralName": "home-pages",
+        "displayName": "Home page"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "Banner": {
+            "type": "component",
+            "component": "shared.section-titre",
+            "repeatable": false
+        },
+        "block_partenaires": {
+            "type": "component",
+            "component": "shared.section-partenaires",
+            "repeatable": true
+        },
+        "section_use_cases": {
+            "type": "component",
+            "component": "shared.section-use-cases",
+            "repeatable": false
+        },
+        "section_expertise_arkeup": {
+            "type": "component",
+            "component": "shared.section-expertise-arke-up",
+            "repeatable": false
+        },
+        "section_devis": {
+            "type": "component",
+            "component": "shared.transformer-votre-entreprise-avec-l-ia",
+            "repeatable": false
+        }
+    }
+}

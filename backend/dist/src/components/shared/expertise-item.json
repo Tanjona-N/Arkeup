@@ -1,0 +1,42 @@
+{
+    "collectionName": "components_shared_expertise_items",
+    "info": {
+        "displayName": "Expertise Item"
+    },
+    "options": {},
+    "attributes": {
+        "image_thumbnail": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "icone_type": {
+            "type": "enumeration",
+            "enum": [
+                "target",
+                "trending-up",
+                "users",
+                "shield",
+                "brain",
+                "rocket",
+                "settings",
+                "chart-bar"
+            ]
+        },
+        "titre": {
+            "type": "string"
+        },
+        "sous_titre": {
+            "type": "string"
+        },
+        "description": {
+            "type": "text"
+        }
+    },
+    "config": {}
+}

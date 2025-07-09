@@ -1,0 +1,21 @@
+{
+    "collectionName": "components_shared_section_partenaires",
+    "info": {
+        "displayName": "section_partenaires"
+    },
+    "options": {},
+    "attributes": {
+        "titre_partenaires": {
+            "type": "string"
+        },
+        "logos": {
+            "type": "media",
+            "multiple": true,
+            "allowedTypes": [
+                "files",
+                "images"
+            ]
+        }
+    },
+    "config": {}
+}

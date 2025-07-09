@@ -1,0 +1,119 @@
+pipeline {
+    agent any
+    
+    environment {
+        NODE_VERSION = '18'
+        REPO_URL = 'https://github.com/Tanjona-N/home-arkuep.git'
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Récupération du code source...'
+                checkout scm
+            }
+        }
+        
+        stage('Setup Node.js') {
+            steps {
+                echo 'Installation de Node.js...'
+                sh '''
+                    # Vérifier si Node.js est installé
+                    if ! command -v node &> /dev/null; then
+                        echo "Installation de Node.js ${NODE_VERSION}..."
+                        
+                        # Mise à jour du système
+                        apt-get update -y
+                        
+                        # Installation de curl si nécessaire
+                        apt-get install -y curl
+                        
+                        # Installation de Node.js via NodeSource
+                        curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+                        apt-get install -y nodejs
+                        
+                        # Vérification de l'installation
+                        node --version
+                        npm --version
+                    else
+                        echo "Node.js déjà installé"
+                        node --version
+                        npm --version
+                    fi
+                '''
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installation des dépendances...'
+                sh '''
+                    npm ci --production=false
+                    echo "Dépendances installées avec succès"
+                '''
+            }
+        }
+        
+        stage('Build Production') {
+            steps {
+                echo 'Build de production...'
+                sh '''
+                    npm run build
+                    echo "Build terminé avec succès"
+                    ls -la dist/
+                '''
+            }
+        }
+        
+        stage('Deploy to FTP') {
+            steps {
+                echo 'Déploiement vers ai.arkeup.com...'
+                script {
+                    sh '''
+                        # Configuration FTP
+                        FTP_HOST="92.222.9.30"
+                        FTP_USER="ai"
+                        FTP_PASS="o.fN?iomAqh+qgO.hySkport"
+                        
+                        # Installation de lftp si nécessaire
+                        if ! command -v lftp &> /dev/null; then
+                            echo "Installation de lftp..."
+                            apt-get update -y
+                            apt-get install -y lftp
+                        fi
+                        
+                        # Vérification que le dossier dist existe
+                        if [ -d "dist" ]; then
+                            echo "Début du déploiement FTP..."
+                            cd dist
+                            
+                            # Upload FTP
+                            lftp -f "
+                            set ftp:ssl-allow no
+                            open ftp://$FTP_USER:$FTP_PASS@$FTP_HOST:21
+                            mirror --reverse --delete --verbose --exclude-glob=.git* --exclude-glob=node_modules* .
+                            bye
+                            "
+                            echo "Déploiement terminé avec succès"
+                        else
+                            echo "Erreur: Le dossier dist n'existe pas"
+                            exit 1
+                        fi
+                    '''
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Déploiement réussi ! Site disponible sur https://ai.arkeup.com'
+        }
+        failure {
+            echo 'Échec du déploiement - Vérifiez les logs'
+        }
+        always {
+            cleanWs()
+        }
+    }
+}

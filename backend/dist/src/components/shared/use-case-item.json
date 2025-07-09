@@ -1,0 +1,30 @@
+{
+    "collectionName": "components_shared_use_case_items",
+    "info": {
+        "displayName": "Use Case Item"
+    },
+    "options": {},
+    "attributes": {
+        "icone": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files"
+            ]
+        },
+        "title_item": {
+            "type": "string"
+        },
+        "description": {
+            "type": "text"
+        },
+        "bouton_texte": {
+            "type": "string"
+        },
+        "bouton_lien": {
+            "type": "string"
+        }
+    },
+    "config": {}
+}

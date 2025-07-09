@@ -1,0 +1,19 @@
+{
+    "collectionName": "components_shared_section_titres",
+    "info": {
+        "displayName": "section titre"
+    },
+    "options": {},
+    "attributes": {
+        "banner_title": {
+            "type": "string"
+        },
+        "banner_sub_title": {
+            "type": "string"
+        },
+        "banner_description": {
+            "type": "text"
+        }
+    },
+    "config": {}
+}
