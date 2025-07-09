@@ -78,8 +78,9 @@ const UseCaseDetail = () => {
       }
 
       try {
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const response = await fetch(
-          `http://localhost:1337/api/home-page?populate[section_use_cases][populate][liste_use_cases][populate]=*&filters[section_use_cases][liste_use_cases][id][$eq]=${id}`
+          `${baseUrl}/api/home-page?populate[section_use_cases][populate][liste_use_cases][populate]=*&filters[section_use_cases][liste_use_cases][id][$eq]=${id}`
         );
         
         if (!response.ok) {

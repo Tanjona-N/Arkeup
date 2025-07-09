@@ -65,7 +65,8 @@ const References = () => {
   useEffect(() => {
     const fetchPartnersData = async () => {
       try {
-        const response = await fetch('http://localhost:1337/api/home-page?populate[Banner]=*&populate[block_partenaires][populate]=*');
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await fetch(`${baseUrl}/api/home-page?populate[Banner]=*&populate[block_partenaires][populate]=*`);
         if (!response.ok) {
           throw new Error('Erreur lors de la récupération des données');
         }
@@ -187,7 +188,7 @@ const References = () => {
                 <div className="w-40 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-110 duration-300">
                   
                   <img 
-                    src={`http://localhost:1337${logo.url}`}
+                    src={`${import.meta.env.VITE_API_BASE_URL}${logo.url}`}
                     alt={logo.alternativeText || logo.name || 'Company logo'}
                     className="w-full h-full object-contain p-4"
                     onError={(e) => {

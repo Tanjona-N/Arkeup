@@ -26,7 +26,8 @@ const Hero = () => {
   useEffect(() => {
     const fetchBannerData = async () => {
       try {
-        const response = await fetch('http://localhost:1337/api/home-page?populate=*');
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await fetch(`${baseUrl}/api/home-page?populate=*`);
         if (!response.ok) {
           throw new Error('Erreur lors de la récupération des données');
         }

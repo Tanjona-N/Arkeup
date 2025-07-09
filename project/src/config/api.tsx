@@ -1,7 +1,7 @@
 // Configuration centralisée pour les APIs
 export const API_CONFIG = {
   STRAPI: {
-    BASE_URL: import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337',
+    BASE_URL: import.meta.env.VITE_API_BASE_URL,
     ENDPOINTS: {
       HOME_PAGE: '/api/home-page',
       USE_CASES: '/api/liste-use-cases',

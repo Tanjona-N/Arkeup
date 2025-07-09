@@ -99,7 +99,8 @@ const Expertise = () => {
   useEffect(() => {
     const fetchExpertiseData = async () => {
       try {
-        const response = await fetch('http://localhost:1337/api/home-page?populate[section_expertise_arkeup][populate][liste_expertises][populate]=*&populate[section_devis]=*');
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await fetch(`${baseUrl}/api/home-page?populate[section_expertise_arkeup][populate][liste_expertises][populate]=*&populate[section_devis]=*`);
         
         if (!response.ok) {
           throw new Error(`Erreur HTTP: ${response.status}`);
@@ -134,7 +135,7 @@ const Expertise = () => {
 
   // Fonction pour obtenir la meilleure URL d'image
   const getImageUrl = (image: ImageThumbnail): string => {
-    const baseUrl = 'http://localhost:1337';
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     
     // Priorité: large > medium > small > original
     if (image.formats?.large?.url) {
