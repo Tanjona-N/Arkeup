@@ -9,7 +9,12 @@ module.exports = (config) => {
       },
     },
     server: {
-      allowedHosts: true
+      allowedHosts: [
+        'api.digitalfactory.arkeup.com',
+        'localhost',
+        '127.0.0.1',
+        '.arkeup.com' // Permet tous les sous-domaines d'arkeup.com
+      ]
     },
   });
 };
