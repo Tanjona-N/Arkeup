@@ -11,9 +11,9 @@ module.exports = (config) => {
       allowedHosts: [
         'api.digitalfactory.arkeup.com',
         'localhost',
-        '127.0.0.1'
-      ],
-      host: true
+        '127.0.0.1',
+        '.arkeup.com'
+      ]
     },
   });
 };
