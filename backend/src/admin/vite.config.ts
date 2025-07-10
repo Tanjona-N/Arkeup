@@ -9,7 +9,8 @@ export default (config: UserConfig) => {
       },
     },
     server: {
-      allowedHosts: true
+      //allowedHosts: true
+      allowedHosts: ["api.digitalfactory.arkeup.com"],
     }
   });
 };
